@@ -14,7 +14,7 @@
 <meta property="og:description" content="本文面向 Linux 用户，记录从 0 到上线的完整过程：初始化 Hexo → 配置文件编写 → 学术风主题（cactus） → GitHub Pages 部署（分支发布方案） → 常见问题速查。所有片段均可直接复制使用。   目录 1) 环境准备 2) 初始化 Hexo 站点 3) 站点配置（根 _config.yml） 4) 安装并启用 cactus 主题 4.1 主题配置 themes&#x2F;c">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2025-08-28T10:20:00.000Z">
-<meta property="article:modified_time" content="2025-08-28T10:38:00.003Z">
+<meta property="article:modified_time" content="2025-08-28T10:42:11.358Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="Hexo">
 <meta property="article:tag" content="GitHub Pages">
@@ -198,8 +198,299 @@ node -v
 npm -v
 git --version
 
+---
 
-## 2) 初始化 Hexo 站点
+# 2) 初始化 Hexo 站点
+
+```bash
+mkdir my-site &amp;&amp; cd my-site
+npx hexo init
+npm install
+
+# 本地预览
+npx hexo server
+# 浏览器访问 http://localhost:4000
+
+
+---
+
+
+端口被占用（Port 4000 has been used）时：
+
+```bash
+
+lsof -i:4000          # 找到 PID
+kill -9 &lt;PID&gt;         # 结束进程
+npx hexo server -p 5000
+
+# 3) 站点配置（根 _config.yml）
+
+这是最重要的配置文件。以下为可直接使用的范例（请按需修改 title/url/deploy.repo 等）：
+
+# 站点信息
+title: 木子知恩的气象窗
+subtitle: 深度学习与气象应用
+description: 个人主页与学术博客
+author: 木子知恩
+language: zh-CN
+timezone: Asia/Shanghai
+
+# URL 与永久链接
+url: https://lizhien23.github.io
+root: /
+permalink: :year/:month/:day/:title/
+
+# 内容与资源
+post_asset_folder: true
+new_post_name: :title.md
+
+# 分页
+per_page: 10
+pagination_dir: page
+
+# 主题（稍后安装 cactus）
+theme: cactus
+
+# 部署（使用 SSH 推送到 GitHub 仓库）
+deploy:
+  type: git
+  repo: git@github.com:lizhien23/lizhien23.github.io.git
+  branch: master
+
+# 4) 安装并启用 cactus 主题
+cd themes
+# 建议用 SSH（国内网络对 https 可能不稳定）
+git clone git@github.com:probberechts/hexo-theme-cactus.git cactus
+cd ..
+
+
+确认根 _config.yml 中主题项为：
+
+theme: cactus
+
+4.1 主题配置 themes/cactus/_config.yml
+
+以下为白色背景 + 导航 + 社交 + 彩色头像的精简配置。直接覆盖即可使用。
+
+##############################################################################
+# Content
+##############################################################################
+
+projects_url: https://github.com/lizhien23
+direction: ltr
+
+nav:
+  home: /
+  about: /about/
+  archives: /archives/
+  projects: https://github.com/lizhien23
+
+social_links:
+  - icon: github
+    link: https://github.com/lizhien23
+    label: GitHub
+  - icon: mail
+    link: mailto:1587293806@qq.com
+    label: Email
+
+tags_overview: false
+posts_overview:
+  show_all_posts: false
+  post_count: 5
+  sort_updated: false
+
+archive:
+  sort_updated: false
+
+post:
+  show_updated: false
+
+copyright:
+  start_year: 2025
+  end_year:
+
+error_404:
+  enabled: true
+  title: &quot;404 Page Not Found&quot;
+  description: &quot;页面不存在，请检查链接是否正确。&quot;
+
+##############################################################################
+# Look and Feel
+##############################################################################
+
+logo:
+  enabled: true
+  width: 60
+  height: 60
+  url: /images/title.jpg     # 把头像放在 source/images/title.jpg
+  gravatar: false
+  grayout: false             # 关闭灰度悬停，保持彩色头像
+
+favicon:
+  desktop:
+    url: /images/favicon.ico
+    gravatar: false
+
+# 可选: dark / light / classic / white（纯白）
+colorscheme: white
+page_width: 48
+
+##############################################################################
+# Misc &amp; Plugins
+##############################################################################
+
+rss: false
+
+mathjax:
+  enabled: false             # 需要公式时改为 true 并按需配置
+
+cdn:
+  enable: true
+  jquery: https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js
+  clipboard: https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js
+  font_awesome: https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css
+
+
+头像：把图片放到 my-site/source/images/title.jpg 后部署即可显示。
+
+5) 添加“关于我”页面（About）
+npx hexo new page about
+
+
+编辑 source/about/index.md：
+
+---
+title: 关于我
+date: 2025-08-28
+---
+
+# 👨‍🔬 木子知恩的气象窗
+
+研究方向：**深度学习与气象应用**  
+邮箱：**[1587293806@qq.com](mailto:1587293806@qq.com)**
+
+## 📚 兴趣方向
+- 热带气旋强度与路径预测
+- 降水模式识别与订正
+- AI + 数值天气预报
+
+## 🔬 项目
+- 台风强度预测模型（CNN/ConvLSTM 等）
+- 降水超分辨率重建（ERA5 ↔︎ GPM）
+
+6) 写博客文章
+npx hexo new &quot;我的第一篇文章&quot;
+# 文件：source/_posts/我的第一篇文章.md
+
+
+最小 Front-matter 示例：
+
+---
+title: 我的第一篇文章
+date: 2025-08-28
+tags: [气象, 深度学习]
+---
+
+这里是正文内容……
+
+
+已启用 post_asset_folder: true：文章配图可放在
+source/_posts/我的第一篇文章/ 中，Markdown 里直接引用相对路径。
+
+7) 部署到 GitHub Pages（分支发布）
+7.1 Git 与 SSH 准备
+git config --global user.name  &quot;lizhien23&quot;
+git config --global user.email &quot;你的GitHub邮箱或 noreply 邮箱&quot;
+
+# 已创建过 SSH Key 可跳过；否则：
+ssh-keygen -t ed25519 -C &quot;你的邮箱&quot;
+
+# 测试连接（若成功会提示 You&#39;ve successfully authenticated）
+ssh -T git@github.com
+
+7.2 仓库 Pages 设置（分支发布）
+
+仓库名：lizhien23.github.io（必须与用户名一致）
+GitHub → 仓库 → Settings → Pages：
+
+Source：Deploy from a branch
+
+Branch：master
+
+Folder：/(root)
+
+7.3 一键部署脚本
+
+在站点根目录创建 deploy.sh：
+
+#!/bin/bash
+echo &quot;🚀 开始部署 Hexo 博客...&quot;
+npx hexo clean
+npx hexo g
+npx hexo d
+echo &quot;✅ 部署完成！访问：https://lizhien23.github.io&quot;
+
+
+赋予执行权限并部署：
+
+chmod +x deploy.sh
+./deploy.sh
+
+
+成功后几分钟内即可在 https://lizhien23.github.io
+ 看到更新。若缓存未刷新，强制刷新或换浏览器测试。
+
+8) 常见问题速查
+
+EACCES: permission denied（npm 全局安装报错）
+用 npx 调命令；或用 nvm 安装 Node 再 npm i -g hexo-cli。
+
+Port 4000 has been used（端口占用）
+lsof -i:4000 → kill -9 &lt;PID&gt;；或 npx hexo s -p 5000。
+
+fatal: unable to access ... Recv failure: Connection reset by peer（https 不稳定）
+将部署与 git clone 改为 SSH 地址：git@github.com:...。
+
+Author identity unknown（Git 未配置用户信息）
+git config --global user.name &quot;xxx&quot; + git config --global user.email &quot;xxx&quot;。
+
+GitHub Actions 与分支部署冲突，日志 &quot;The operation was canceled&quot;
+Pages → Build and deployment 选择 Deploy from a branch（master/root），仅用 hexo d。
+
+404 页面
+访问不存在路径或 about/index.html 未生成。确保 source/about/index.md 存在，并执行 clean → g → d 后再访问 /about/。
+
+头像变灰
+themes/cactus/_config.yml 中 logo.grayout: false。
+
+改成白色背景
+themes/cactus/_config.yml 中 colorscheme: white 或 light。
+
+9) 日常工作流
+# 1. 写文章 / 改配置
+npx hexo new &quot;文章标题&quot;
+# 或编辑 about、主题配置等
+
+# 2. 本地预览（可选）
+npx hexo s
+
+# 3. 一键上线
+./deploy.sh
+
+10) 目录结构速览
+my-site/
+├─ _config.yml                 # 站点配置（标题/URL/主题/部署）
+├─ themes/
+│  └─ cactus/
+│     └─ _config.yml           # 主题配置（导航/样式/社交/Logo）
+├─ source/
+│  ├─ _posts/                  # 文章（Markdown）
+│  ├─ images/                  # 站点级图片（头像、favicon 等）
+│  └─ about/
+│     └─ index.md              # 关于我页面
+├─ public/                     # 生成后的静态文件（自动生成）
+└─ deploy.sh                   # 一键部署脚本（可选）
+
 </code></pre>
 
   </div>
