@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="说明：  本文把“从 0 到上线”的全部步骤整理成一份可直接复制的 Markdown 文档。  为了便于一次性复制，本文件的所有内容（包括命令和配置）都在同一个代码块中给出。  你只需按顺序执行命令、将配置粘贴到相应文件即可完成搭建。 ──────────────────────────────────────────────────────────────────────────────  环境">
+<meta property="og:type" content="article">
+<meta property="og:title" content="从配置文件开始：搭建我的 Hexo 学术主页">
+<meta property="og:url" content="http://example.com/2025/08/28/%E6%96%B0%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%B1%9E%E4%BA%8E%E8%87%AA%E5%B7%B1%E7%9A%84%E7%BD%91%E9%A1%B52/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="说明：  本文把“从 0 到上线”的全部步骤整理成一份可直接复制的 Markdown 文档。  为了便于一次性复制，本文件的所有内容（包括命令和配置）都在同一个代码块中给出。  你只需按顺序执行命令、将配置粘贴到相应文件即可完成搭建。 ──────────────────────────────────────────────────────────────────────────────  环境">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2025-08-28T10:30:00.000Z">
+<meta property="article:modified_time" content="2025-08-28T10:33:59.453Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Hexo">
+<meta property="article:tag" content="GitHub Pages">
+<meta property="article:tag" content="教程">
+<meta property="article:tag" content="Linux">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>从配置文件开始：搭建我的 Hexo 学术主页</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/probberechts">Projects</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/2025/08/28/%E6%96%B0%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%B1%9E%E4%BA%8E%E8%87%AA%E5%B7%B1%E7%9A%84%E7%BD%91%E9%A1%B5/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2025/08/28/%E6%96%B0%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%B1%9E%E4%BA%8E%E8%87%AA%E5%B7%B1%E7%9A%84%E7%BD%91%E9%A1%B52/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2025/08/28/%E6%96%B0%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%B1%9E%E4%BA%8E%E8%87%AA%E5%B7%B1%E7%9A%84%E7%BD%91%E9%A1%B52/&text=从配置文件开始：搭建我的 Hexo 学术主页"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2025/08/28/%E6%96%B0%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%B1%9E%E4%BA%8E%E8%87%AA%E5%B7%B1%E7%9A%84%E7%BD%91%E9%A1%B52/&title=从配置文件开始：搭建我的 Hexo 学术主页"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2025/08/28/%E6%96%B0%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%B1%9E%E4%BA%8E%E8%87%AA%E5%B7%B1%E7%9A%84%E7%BD%91%E9%A1%B52/&is_video=false&description=从配置文件开始：搭建我的 Hexo 学术主页"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=从配置文件开始：搭建我的 Hexo 学术主页&body=Check out this article: http://example.com/2025/08/28/%E6%96%B0%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%B1%9E%E4%BA%8E%E8%87%AA%E5%B7%B1%E7%9A%84%E7%BD%91%E9%A1%B52/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2025/08/28/%E6%96%B0%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%B1%9E%E4%BA%8E%E8%87%AA%E5%B7%B1%E7%9A%84%E7%BD%91%E9%A1%B52/&title=从配置文件开始：搭建我的 Hexo 学术主页"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2025/08/28/%E6%96%B0%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%B1%9E%E4%BA%8E%E8%87%AA%E5%B7%B1%E7%9A%84%E7%BD%91%E9%A1%B52/&title=从配置文件开始：搭建我的 Hexo 学术主页"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2025/08/28/%E6%96%B0%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%B1%9E%E4%BA%8E%E8%87%AA%E5%B7%B1%E7%9A%84%E7%BD%91%E9%A1%B52/&title=从配置文件开始：搭建我的 Hexo 学术主页"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2025/08/28/%E6%96%B0%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%B1%9E%E4%BA%8E%E8%87%AA%E5%B7%B1%E7%9A%84%E7%BD%91%E9%A1%B52/&title=从配置文件开始：搭建我的 Hexo 学术主页"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2025/08/28/%E6%96%B0%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%B1%9E%E4%BA%8E%E8%87%AA%E5%B7%B1%E7%9A%84%E7%BD%91%E9%A1%B52/&name=从配置文件开始：搭建我的 Hexo 学术主页&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2025/08/28/%E6%96%B0%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%B1%9E%E4%BA%8E%E8%87%AA%E5%B7%B1%E7%9A%84%E7%BD%91%E9%A1%B52/&t=从配置文件开始：搭建我的 Hexo 学术主页"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8E%A8%E8%8D%90%E7%94%A8-nvm-%E5%AE%89%E8%A3%85-Node%EF%BC%8C%E9%81%BF%E5%85%8D-npm-g-%E6%9D%83%E9%99%90%E9%97%AE%E9%A2%98"><span class="toc-number">1.</span> <span class="toc-text">推荐用 nvm 安装 Node，避免 npm -g 权限问题</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%87%8D%E6%96%B0%E5%8A%A0%E8%BD%BD-shell%EF%BC%88%E8%8B%A5%E4%BD%A0%E7%94%A8-bash%EF%BC%89"><span class="toc-number">2.</span> <span class="toc-text">重新加载 shell（若你用 bash）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%89%E8%A3%85-LTS-%E7%89%88%E6%9C%AC-Node"><span class="toc-number">3.</span> <span class="toc-text">安装 LTS 版本 Node</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%AA%8C%E8%AF%81"><span class="toc-number">4.</span> <span class="toc-text">验证</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9C%AC%E5%9C%B0%E9%A2%84%E8%A7%88"><span class="toc-number">5.</span> <span class="toc-text">本地预览</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E8%AE%BF%E9%97%AE-http-localhost-4000"><span class="toc-number">6.</span> <span class="toc-text">浏览器访问: http:&#x2F;&#x2F;localhost:4000</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E2%80%94%E2%80%94%E2%80%94%E2%80%94%E2%80%94%E2%80%94%E2%80%94%E2%80%94-my-site-config-yml-%E5%BC%80%E5%A7%8B-%E2%80%94%E2%80%94%E2%80%94%E2%80%94%E2%80%94%E2%80%94%E2%80%94%E2%80%94"><span class="toc-number">7.</span> <span class="toc-text">———————— my-site&#x2F;_config.yml 开始 ————————</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E4%BF%A1%E6%81%AF"><span class="toc-number">8.</span> <span class="toc-text">基本信息</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BD%91%E5%9D%80%E4%B8%8E%E6%B0%B8%E4%B9%85%E9%93%BE%E6%8E%A5"><span class="toc-number">9.</span> <span class="toc-text">网址与永久链接</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%86%85%E5%AE%B9%E4%B8%8E%E8%B5%84%E6%BA%90"><span class="toc-number">10.</span> <span class="toc-text">内容与资源</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%86%E9%A1%B5"><span class="toc-number">11.</span> <span class="toc-text">分页</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%BB%E9%A2%98%EF%BC%88%E7%AC%AC-4-%E6%AD%A5%E4%BC%9A%E5%AE%89%E8%A3%85-cactus%EF%BC%89"><span class="toc-number">12.</span> <span class="toc-text">主题（第 4 步会安装 cactus）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%83%A8%E7%BD%B2%EF%BC%88%E4%BD%BF%E7%94%A8-SSH-%E6%8E%A8%E9%80%81%E5%88%B0-GitHub-%E4%BB%93%E5%BA%93%EF%BC%89"><span class="toc-number">13.</span> <span class="toc-text">部署（使用 SSH 推送到 GitHub 仓库）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E2%80%94%E2%80%94%E2%80%94%E2%80%94%E2%80%94%E2%80%94%E2%80%94%E2%80%94-my-site-config-yml-%E7%BB%93%E6%9D%9F-%E2%80%94%E2%80%94%E2%80%94%E2%80%94%E2%80%94%E2%80%94%E2%80%94%E2%80%94"><span class="toc-number">14.</span> <span class="toc-text">———————— my-site&#x2F;_config.yml 结束 ————————</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BF%9B%E5%85%A5%E4%B8%BB%E9%A2%98%E7%9B%AE%E5%BD%95%E5%B9%B6%E5%85%8B%E9%9A%86%EF%BC%88%E5%BB%BA%E8%AE%AE%E7%94%A8-SSH%EF%BC%8CHTTPS-%E5%9C%A8%E5%9B%BD%E5%86%85%E5%8F%AF%E8%83%BD%E4%B8%8D%E7%A8%B3%EF%BC%89"><span class="toc-number">15.</span> <span class="toc-text">进入主题目录并克隆（建议用 SSH，HTTPS 在国内可能不稳）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%A1%AE%E8%AE%A4%E6%A0%B9-config-yml-%E4%B8%AD%E5%B7%B2%E6%9C%89%EF%BC%9A"><span class="toc-number">16.</span> <span class="toc-text">确认根 _config.yml 中已有：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#theme-cactus"><span class="toc-number">17.</span> <span class="toc-text">theme: cactus</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E2%80%94%E2%80%94%E2%80%94%E2%80%94-my-site-themes-cactus-config-yml-%E5%BC%80%E5%A7%8B-%E2%80%94%E2%80%94%E2%80%94%E2%80%94%E2%80%94%E2%80%94%E2%80%94"><span class="toc-number">18.</span> <span class="toc-text">————- my-site&#x2F;themes&#x2F;cactus&#x2F;_config.yml 开始 ———————</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Content"><span class="toc-number">19.</span> <span class="toc-text">Content</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Look-and-Feel"><span class="toc-number">20.</span> <span class="toc-text">Look and Feel</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%A2%9C%E8%89%B2%E6%96%B9%E6%A1%88%EF%BC%9Adark-light-classic-white%EF%BC%88%E7%BA%AF%E7%99%BD%EF%BC%89"><span class="toc-number">21.</span> <span class="toc-text">颜色方案：dark &#x2F; light &#x2F; classic &#x2F; white（纯白）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Misc-Plugins"><span class="toc-number">22.</span> <span class="toc-text">Misc &amp; Plugins</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E2%80%94%E2%80%94%E2%80%94%E2%80%94-my-site-themes-cactus-config-yml-%E7%BB%93%E6%9D%9F-%E2%80%94%E2%80%94%E2%80%94%E2%80%94%E2%80%94%E2%80%94%E2%80%94"><span class="toc-number">23.</span> <span class="toc-text">————- my-site&#x2F;themes&#x2F;cactus&#x2F;_config.yml 结束 ———————</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E9%A1%B5%E9%9D%A2"><span class="toc-number">24.</span> <span class="toc-text">创建页面</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BC%96%E8%BE%91%E6%96%87%E4%BB%B6-my-site-source-about-index-md"><span class="toc-number">25.</span> <span class="toc-text">编辑文件: my-site&#x2F;source&#x2F;about&#x2F;index.md</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%AF%E7%9B%B4%E6%8E%A5%E4%BD%BF%E7%94%A8%E4%B8%8B%E9%9D%A2%E7%9A%84%E5%86%85%E5%AE%B9%EF%BC%88%E6%8C%89%E9%9C%80%E4%BF%AE%E6%94%B9%EF%BC%89%EF%BC%9A"><span class="toc-number">26.</span> <span class="toc-text">可直接使用下面的内容（按需修改）：</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#title-%E5%85%B3%E4%BA%8E%E6%88%91date-2025-08-28"><span class="toc-number">26.1.</span> <span class="toc-text">title: 关于我date: 2025-08-28</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%F0%9F%91%A8%E2%80%8D%F0%9F%94%AC-%E6%9C%A8%E5%AD%90%E7%9F%A5%E6%81%A9%E7%9A%84%E6%B0%94%E8%B1%A1%E7%AA%97"><span class="toc-number">27.</span> <span class="toc-text">👨‍🔬 木子知恩的气象窗</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%93%9A-%E5%85%B4%E8%B6%A3%E6%96%B9%E5%90%91"><span class="toc-number">27.1.</span> <span class="toc-text">📚 兴趣方向</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%94%AC-%E9%A1%B9%E7%9B%AE"><span class="toc-number">27.2.</span> <span class="toc-text">🔬 项目</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%96%B0%E5%BB%BA%E6%96%87%E7%AB%A0"><span class="toc-number">28.</span> <span class="toc-text">新建文章</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BC%96%E8%BE%91-my-site-source-posts-%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0-md"><span class="toc-number">29.</span> <span class="toc-text">编辑: my-site&#x2F;source&#x2F;_posts&#x2F;我的第一篇文章.md</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9C%80%E5%B0%8F%E7%A4%BA%E4%BE%8B%EF%BC%9A"><span class="toc-number">30.</span> <span class="toc-text">最小示例：</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#title-%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0date-2025-08-28tags-%E6%B0%94%E8%B1%A1-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0"><span class="toc-number">30.1.</span> <span class="toc-text">title: 我的第一篇文章date: 2025-08-28tags: [气象, 深度学习]</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%8B%A5%E6%9C%AA%E5%88%9B%E5%BB%BA%E8%BF%87-SSH-Key%EF%BC%9A"><span class="toc-number">31.</span> <span class="toc-text">若未创建过 SSH Key：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%E8%BF%9E%E6%8E%A5%EF%BC%88%E7%9C%8B%E5%88%B0-You%E2%80%99ve-successfully-authenticated-%E5%8D%B3%E6%88%90%E5%8A%9F%EF%BC%89"><span class="toc-number">32.</span> <span class="toc-text">测试连接（看到 You’ve successfully authenticated 即成功）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E5%86%99%E6%96%87%E7%AB%A0-%E6%94%B9%E9%85%8D%E7%BD%AE"><span class="toc-number">33.</span> <span class="toc-text">1. 写文章 &#x2F; 改配置</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E6%9C%AC%E5%9C%B0%E9%A2%84%E8%A7%88%EF%BC%88%E5%8F%AF%E9%80%89%EF%BC%89"><span class="toc-number">34.</span> <span class="toc-text">2. 本地预览（可选）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E4%B8%80%E9%94%AE%E4%B8%8A%E7%BA%BF"><span class="toc-number">35.</span> <span class="toc-text">3. 一键上线</span></a></li></ol>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        从配置文件开始：搭建我的 Hexo 学术主页
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">John Doe</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2025-08-28T10:30:00.000Z" class="dt-published" itemprop="datePublished">2025-08-28</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fa-solid fa-tag"></i>
+        <a class="p-category" href="/tags/GitHub-Pages/" rel="tag">GitHub Pages</a>, <a class="p-category" href="/tags/Hexo/" rel="tag">Hexo</a>, <a class="p-category" href="/tags/Linux/" rel="tag">Linux</a>, <a class="p-category" href="/tags/%E6%95%99%E7%A8%8B/" rel="tag">教程</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <p>说明：<br>  本文把“从 0 到上线”的全部步骤整理成一份可直接复制的 Markdown 文档。<br>  为了便于一次性复制，本文件的所有内容（包括命令和配置）都在同一个代码块中给出。<br>  你只需按顺序执行命令、将配置粘贴到相应文件即可完成搭建。</p>
+<p>──────────────────────────────────────────────────────────────────────────────</p>
+<ol>
+<li>环境准备<br>──────────────────────────────────────────────────────────────────────────────</li>
+</ol>
+<h1 id="推荐用-nvm-安装-Node，避免-npm-g-权限问题"><a href="#推荐用-nvm-安装-Node，避免-npm-g-权限问题" class="headerlink" title="推荐用 nvm 安装 Node，避免 npm -g 权限问题"></a>推荐用 nvm 安装 Node，避免 npm -g 权限问题</h1><p>curl -fsSL <a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh">https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh</a> | bash</p>
+<h1 id="重新加载-shell（若你用-bash）"><a href="#重新加载-shell（若你用-bash）" class="headerlink" title="重新加载 shell（若你用 bash）"></a>重新加载 shell（若你用 bash）</h1><p>source ~&#x2F;.nvm&#x2F;nvm.sh</p>
+<h1 id="安装-LTS-版本-Node"><a href="#安装-LTS-版本-Node" class="headerlink" title="安装 LTS 版本 Node"></a>安装 LTS 版本 Node</h1><p>nvm install –lts</p>
+<h1 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h1><p>node -v<br>npm -v<br>git –version</p>
+<p>提示：</p>
+<ul>
+<li>如果系统已安装 Node&#x2F;npm，可跳过。</li>
+<li>为避免 “npm i -g” 的 EACCES 报错，优先使用 npx 调 Hexo 命令；或使用 nvm 安装的 Node 后再全局安装。</li>
+</ul>
+<p>──────────────────────────────────────────────────────────────────────────────<br>2) 初始化 Hexo 站点<br>──────────────────────────────────────────────────────────────────────────────</p>
+<p>mkdir my-site &amp;&amp; cd my-site<br>npx hexo init<br>npm install</p>
+<h1 id="本地预览"><a href="#本地预览" class="headerlink" title="本地预览"></a>本地预览</h1><p>npx hexo server</p>
+<h1 id="浏览器访问-http-localhost-4000"><a href="#浏览器访问-http-localhost-4000" class="headerlink" title="浏览器访问: http://localhost:4000"></a>浏览器访问: <a target="_blank" rel="noopener" href="http://localhost:4000/">http://localhost:4000</a></h1><p>若端口被占用（Port 4000 has been used）：<br>  lsof -i:4000          # 找到占用端口的进程 PID<br>  kill -9 <PID>         # 结束进程<br>  npx hexo server -p 5000</p>
+<p>──────────────────────────────────────────────────────────────────────────────<br>3) 站点配置（根目录 <code>_config.yml</code>）<br>──────────────────────────────────────────────────────────────────────────────</p>
+<p>说明：<br>  下面是一份可直接使用的根配置示例。请根据你的账号替换 repo&#x2F;url 等字段。<br>  将以下 YAML 完整覆盖保存到: my-site&#x2F;_config.yml</p>
+<h1 id="————————-my-site-config-yml-开始-————————"><a href="#————————-my-site-config-yml-开始-————————" class="headerlink" title="———————— my-site&#x2F;_config.yml 开始 ————————"></a>———————— my-site&#x2F;_config.yml 开始 ————————</h1><h1 id="基本信息"><a href="#基本信息" class="headerlink" title="基本信息"></a>基本信息</h1><p>title: 木子知恩的气象窗<br>subtitle: 深度学习与气象应用<br>description: 个人主页与学术博客<br>author: 木子知恩<br>language: zh-CN<br>timezone: Asia&#x2F;Shanghai</p>
+<h1 id="网址与永久链接"><a href="#网址与永久链接" class="headerlink" title="网址与永久链接"></a>网址与永久链接</h1><p>url: <a target="_blank" rel="noopener" href="https://lizhien23.github.io/">https://lizhien23.github.io</a><br>root: &#x2F;<br>permalink: :year&#x2F;:month&#x2F;:day&#x2F;:title&#x2F;</p>
+<h1 id="内容与资源"><a href="#内容与资源" class="headerlink" title="内容与资源"></a>内容与资源</h1><p>post_asset_folder: true<br>new_post_name: :title.md</p>
+<h1 id="分页"><a href="#分页" class="headerlink" title="分页"></a>分页</h1><p>per_page: 10<br>pagination_dir: page</p>
+<h1 id="主题（第-4-步会安装-cactus）"><a href="#主题（第-4-步会安装-cactus）" class="headerlink" title="主题（第 4 步会安装 cactus）"></a>主题（第 4 步会安装 cactus）</h1><p>theme: cactus</p>
+<h1 id="部署（使用-SSH-推送到-GitHub-仓库）"><a href="#部署（使用-SSH-推送到-GitHub-仓库）" class="headerlink" title="部署（使用 SSH 推送到 GitHub 仓库）"></a>部署（使用 SSH 推送到 GitHub 仓库）</h1><p>deploy:<br>  type: git<br>  repo: <a href="mailto:&#x67;&#x69;&#116;&#64;&#x67;&#x69;&#x74;&#104;&#117;&#x62;&#46;&#x63;&#111;&#109;">&#x67;&#x69;&#116;&#64;&#x67;&#x69;&#x74;&#104;&#117;&#x62;&#46;&#x63;&#111;&#109;</a>:lizhien23&#x2F;lizhien23.github.io.git<br>  branch: master</p>
+<h1 id="————————-my-site-config-yml-结束-————————"><a href="#————————-my-site-config-yml-结束-————————" class="headerlink" title="———————— my-site&#x2F;_config.yml 结束 ————————"></a>———————— my-site&#x2F;_config.yml 结束 ————————</h1><p>──────────────────────────────────────────────────────────────────────────────<br>4) 安装并启用 cactus 主题（学术简洁风）<br>──────────────────────────────────────────────────────────────────────────────</p>
+<h1 id="进入主题目录并克隆（建议用-SSH，HTTPS-在国内可能不稳）"><a href="#进入主题目录并克隆（建议用-SSH，HTTPS-在国内可能不稳）" class="headerlink" title="进入主题目录并克隆（建议用 SSH，HTTPS 在国内可能不稳）"></a>进入主题目录并克隆（建议用 SSH，HTTPS 在国内可能不稳）</h1><p>cd themes<br>git clone <a href="mailto:&#x67;&#x69;&#x74;&#64;&#x67;&#105;&#x74;&#x68;&#x75;&#x62;&#46;&#x63;&#111;&#109;">&#x67;&#x69;&#x74;&#64;&#x67;&#105;&#x74;&#x68;&#x75;&#x62;&#46;&#x63;&#111;&#109;</a>:probberechts&#x2F;hexo-theme-cactus.git cactus<br>cd ..</p>
+<h1 id="确认根-config-yml-中已有："><a href="#确认根-config-yml-中已有：" class="headerlink" title="确认根 _config.yml 中已有："></a>确认根 _config.yml 中已有：</h1><h1 id="theme-cactus"><a href="#theme-cactus" class="headerlink" title="theme: cactus"></a>theme: cactus</h1><p>──────────────────────────────────────────────────────────────────────────────<br>4.1) 主题配置（themes&#x2F;cactus&#x2F;_config.yml）<br>──────────────────────────────────────────────────────────────────────────────</p>
+<p>说明：<br>  将以下配置覆盖保存到: my-site&#x2F;themes&#x2F;cactus&#x2F;_config.yml<br>  这是“白色背景 + 导航 + 社交 + 彩色头像”的精简实用方案。</p>
+<h1 id="————-my-site-themes-cactus-config-yml-开始-———————"><a href="#————-my-site-themes-cactus-config-yml-开始-———————" class="headerlink" title="————- my-site&#x2F;themes&#x2F;cactus&#x2F;_config.yml 开始 ———————"></a>————- my-site&#x2F;themes&#x2F;cactus&#x2F;_config.yml 开始 ———————</h1><p>##############################################################################</p>
+<h1 id="Content"><a href="#Content" class="headerlink" title="Content"></a>Content</h1><p>##############################################################################</p>
+<p>projects_url: <a target="_blank" rel="noopener" href="https://github.com/lizhien23">https://github.com/lizhien23</a><br>direction: ltr</p>
+<p>nav:<br>  home: &#x2F;<br>  about: &#x2F;about&#x2F;<br>  archives: &#x2F;archives&#x2F;<br>  projects: <a target="_blank" rel="noopener" href="https://github.com/lizhien23">https://github.com/lizhien23</a></p>
+<p>social_links:</p>
+<ul>
+<li>icon: github<br>link: <a target="_blank" rel="noopener" href="https://github.com/lizhien23">https://github.com/lizhien23</a><br>label: GitHub</li>
+<li>icon: mail<br>link: mailto:<a href="mailto:&#49;&#x35;&#56;&#55;&#50;&#x39;&#x33;&#x38;&#48;&#54;&#64;&#113;&#113;&#x2e;&#x63;&#111;&#x6d;">&#49;&#x35;&#56;&#55;&#50;&#x39;&#x33;&#x38;&#48;&#54;&#64;&#113;&#113;&#x2e;&#x63;&#111;&#x6d;</a><br>label: Email</li>
+</ul>
+<p>tags_overview: false<br>posts_overview:<br>  show_all_posts: false<br>  post_count: 5<br>  sort_updated: false</p>
+<p>archive:<br>  sort_updated: false</p>
+<p>post:<br>  show_updated: false</p>
+<p>copyright:<br>  start_year: 2025<br>  end_year:</p>
+<p>error_404:<br>  enabled: true<br>  title: “404 Page Not Found”<br>  description: “页面不存在，请检查链接是否正确。”</p>
+<p>##############################################################################</p>
+<h1 id="Look-and-Feel"><a href="#Look-and-Feel" class="headerlink" title="Look and Feel"></a>Look and Feel</h1><p>##############################################################################</p>
+<p>logo:<br>  enabled: true<br>  width: 60<br>  height: 60<br>  url: &#x2F;images&#x2F;title.jpg     # 头像：放到 my-site&#x2F;source&#x2F;images&#x2F;title.jpg<br>  gravatar: false<br>  grayout: false             # 关闭灰度悬停，保持彩色头像</p>
+<p>favicon:<br>  desktop:<br>    url: &#x2F;images&#x2F;favicon.ico<br>    gravatar: false</p>
+<h1 id="颜色方案：dark-light-classic-white（纯白）"><a href="#颜色方案：dark-light-classic-white（纯白）" class="headerlink" title="颜色方案：dark &#x2F; light &#x2F; classic &#x2F; white（纯白）"></a>颜色方案：dark &#x2F; light &#x2F; classic &#x2F; white（纯白）</h1><p>colorscheme: white<br>page_width: 48</p>
+<p>##############################################################################</p>
+<h1 id="Misc-Plugins"><a href="#Misc-Plugins" class="headerlink" title="Misc &amp; Plugins"></a>Misc &amp; Plugins</h1><p>##############################################################################</p>
+<p>rss: false</p>
+<p>mathjax:<br>  enabled: false             # 需要公式时改为 true 并按需配置</p>
+<p>cdn:<br>  enable: true<br>  jquery: <a target="_blank" rel="noopener" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js">https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js</a><br>  clipboard: <a target="_blank" rel="noopener" href="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js">https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js</a><br>  font_awesome: <a target="_blank" rel="noopener" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css</a></p>
+<h1 id="————-my-site-themes-cactus-config-yml-结束-———————"><a href="#————-my-site-themes-cactus-config-yml-结束-———————" class="headerlink" title="————- my-site&#x2F;themes&#x2F;cactus&#x2F;_config.yml 结束 ———————"></a>————- my-site&#x2F;themes&#x2F;cactus&#x2F;_config.yml 结束 ———————</h1><p>提示：</p>
+<ul>
+<li>将头像图片放到: my-site&#x2F;source&#x2F;images&#x2F;title.jpg</li>
+<li>需要暗色风格时，把 colorscheme 改为 dark 即可。</li>
+</ul>
+<p>──────────────────────────────────────────────────────────────────────────────<br>5) 添加“关于我”页面（展示个人信息）<br>──────────────────────────────────────────────────────────────────────────────</p>
+<h1 id="创建页面"><a href="#创建页面" class="headerlink" title="创建页面"></a>创建页面</h1><p>npx hexo new page about</p>
+<h1 id="编辑文件-my-site-source-about-index-md"><a href="#编辑文件-my-site-source-about-index-md" class="headerlink" title="编辑文件: my-site&#x2F;source&#x2F;about&#x2F;index.md"></a>编辑文件: my-site&#x2F;source&#x2F;about&#x2F;index.md</h1><h1 id="可直接使用下面的内容（按需修改）："><a href="#可直接使用下面的内容（按需修改）：" class="headerlink" title="可直接使用下面的内容（按需修改）："></a>可直接使用下面的内容（按需修改）：</h1><hr>
+<h2 id="title-关于我date-2025-08-28"><a href="#title-关于我date-2025-08-28" class="headerlink" title="title: 关于我date: 2025-08-28"></a>title: 关于我<br>date: 2025-08-28</h2><h1 id="👨‍🔬-木子知恩的气象窗"><a href="#👨‍🔬-木子知恩的气象窗" class="headerlink" title="👨‍🔬 木子知恩的气象窗"></a>👨‍🔬 木子知恩的气象窗</h1><p>研究方向：<strong>深度学习与气象应用</strong><br>邮箱：**<a href="mailto:1587293806@qq.com">1587293806@qq.com</a>**</p>
+<h2 id="📚-兴趣方向"><a href="#📚-兴趣方向" class="headerlink" title="📚 兴趣方向"></a>📚 兴趣方向</h2><ul>
+<li>热带气旋强度与路径预测</li>
+<li>降水模式识别与订正</li>
+<li>AI + 数值天气预报</li>
+</ul>
+<h2 id="🔬-项目"><a href="#🔬-项目" class="headerlink" title="🔬 项目"></a>🔬 项目</h2><ul>
+<li>台风强度预测模型（CNN&#x2F;ConvLSTM 等）</li>
+<li>降水超分辨率重建（ERA5 ↔︎ GPM）</li>
+</ul>
+<p>──────────────────────────────────────────────────────────────────────────────<br>6) 写博客文章<br>──────────────────────────────────────────────────────────────────────────────</p>
+<h1 id="新建文章"><a href="#新建文章" class="headerlink" title="新建文章"></a>新建文章</h1><p>npx hexo new “我的第一篇文章”</p>
+<h1 id="编辑-my-site-source-posts-我的第一篇文章-md"><a href="#编辑-my-site-source-posts-我的第一篇文章-md" class="headerlink" title="编辑: my-site&#x2F;source&#x2F;_posts&#x2F;我的第一篇文章.md"></a>编辑: my-site&#x2F;source&#x2F;_posts&#x2F;我的第一篇文章.md</h1><h1 id="最小示例："><a href="#最小示例：" class="headerlink" title="最小示例："></a>最小示例：</h1><hr>
+<h2 id="title-我的第一篇文章date-2025-08-28tags-气象-深度学习"><a href="#title-我的第一篇文章date-2025-08-28tags-气象-深度学习" class="headerlink" title="title: 我的第一篇文章date: 2025-08-28tags: [气象, 深度学习]"></a>title: 我的第一篇文章<br>date: 2025-08-28<br>tags: [气象, 深度学习]</h2><p>这里是正文内容……</p>
+<p>说明：</p>
+<ul>
+<li>已启用 post_asset_folder: true，文章配图可放在：<br>my-site&#x2F;source&#x2F;_posts&#x2F;我的第一篇文章&#x2F; 中；<br>Markdown 里直接相对路径引用即可。</li>
+</ul>
+<p>──────────────────────────────────────────────────────────────────────────────<br>7) 部署到 GitHub Pages（分支发布：master&#x2F;root）<br>──────────────────────────────────────────────────────────────────────────────</p>
+<p>7.1 Git 与 SSH 准备<br>  git config –global user.name  “lizhien23”<br>  git config –global user.email “你的 GitHub 邮箱或 noreply 邮箱”</p>
+<h1 id="若未创建过-SSH-Key："><a href="#若未创建过-SSH-Key：" class="headerlink" title="若未创建过 SSH Key："></a>若未创建过 SSH Key：</h1><p>  ssh-keygen -t ed25519 -C “你的邮箱”</p>
+<h1 id="测试连接（看到-You’ve-successfully-authenticated-即成功）"><a href="#测试连接（看到-You’ve-successfully-authenticated-即成功）" class="headerlink" title="测试连接（看到 You’ve successfully authenticated 即成功）"></a>测试连接（看到 You’ve successfully authenticated 即成功）</h1><p>  ssh -T <a href="mailto:&#103;&#x69;&#116;&#64;&#103;&#105;&#x74;&#x68;&#117;&#98;&#x2e;&#99;&#111;&#x6d;">&#103;&#x69;&#116;&#64;&#103;&#105;&#x74;&#x68;&#117;&#98;&#x2e;&#99;&#111;&#x6d;</a></p>
+<p>7.2 仓库 Pages 设置<br>  仓库名：lizhien23.github.io（必须与 GitHub 用户名一致）<br>  GitHub → 仓库 → Settings → Pages：<br>    - Source 选择：Deploy from a branch<br>    - Branch 选择：master<br>    - Folder 选择：&#x2F; (root)</p>
+<p>7.3 一键部署脚本（推荐）<br>  在 my-site 根目录创建 deploy.sh，内容如下：</p>
+<p>#!&#x2F;bin&#x2F;bash<br>echo “🚀 开始部署 Hexo 博客…”<br>npx hexo clean<br>npx hexo g<br>npx hexo d<br>echo “✅ 部署完成！访问：<a target="_blank" rel="noopener" href="https://lizhien23.github.io/">https://lizhien23.github.io</a>“</p>
+<p>  赋权并执行：<br>    chmod +x deploy.sh<br>    .&#x2F;deploy.sh</p>
+<p>  部署成功日志包含：<br>    INFO  Deploy done: git<br>  稍等片刻访问：<br>    <a target="_blank" rel="noopener" href="https://lizhien23.github.io/">https://lizhien23.github.io</a></p>
+<p>──────────────────────────────────────────────────────────────────────────────<br>8) 常见问题速查<br>──────────────────────────────────────────────────────────────────────────────</p>
+<p>• npm 全局安装报错：EACCES: permission denied<br>  解决：优先用 npx；或使用 nvm 安装 Node 后再 npm i -g hexo-cli。</p>
+<p>• 端口占用：Port 4000 has been used<br>  解决：lsof -i:4000 → kill -9 <PID>；或 npx hexo s -p 5000。</p>
+<p>• 拉取&#x2F;推送 https 失败：Recv failure: Connection reset by peer<br>  解决：改用 SSH 地址（<a href="mailto:&#x67;&#105;&#x74;&#x40;&#103;&#x69;&#116;&#104;&#117;&#98;&#46;&#x63;&#111;&#x6d;">&#x67;&#105;&#x74;&#x40;&#103;&#x69;&#116;&#104;&#117;&#98;&#46;&#x63;&#111;&#x6d;</a>:…）。</p>
+<p>• Git “Author identity unknown”<br>  解决：git config –global user.name &#x2F; user.email。</p>
+<p>• GitHub Actions 与分支发布冲突，日志显示 “The operation was canceled”<br>  解决：仓库 Pages 改为 Deploy from a branch（master&#x2F;root），只用 hexo d 部署。</p>
+<p>• 打开页面 404<br>  解决：路径不存在或 about&#x2F;index.html 未生成；确保执行 clean → g → d 后访问 &#x2F;about&#x2F;。</p>
+<p>• 头像变灰<br>  解决：themes&#x2F;cactus&#x2F;_config.yml → logo.grayout: false。</p>
+<p>• 改成白色背景<br>  解决：themes&#x2F;cactus&#x2F;_config.yml → colorscheme: white（或 light）。</p>
+<p>──────────────────────────────────────────────────────────────────────────────<br>9) 日常工作流（建议固定成 3 步）<br>──────────────────────────────────────────────────────────────────────────────</p>
+<h1 id="1-写文章-改配置"><a href="#1-写文章-改配置" class="headerlink" title="1. 写文章 &#x2F; 改配置"></a>1. 写文章 &#x2F; 改配置</h1><p>npx hexo new “文章标题”</p>
+<h1 id="2-本地预览（可选）"><a href="#2-本地预览（可选）" class="headerlink" title="2. 本地预览（可选）"></a>2. 本地预览（可选）</h1><p>npx hexo s</p>
+<h1 id="3-一键上线"><a href="#3-一键上线" class="headerlink" title="3. 一键上线"></a>3. 一键上线</h1><p>.&#x2F;deploy.sh</p>
+<p>──────────────────────────────────────────────────────────────────────────────<br>10) 目录结构速览（关键部分）<br>──────────────────────────────────────────────────────────────────────────────</p>
+<p>my-site&#x2F;<br>├─ _config.yml                 # 站点配置（标题&#x2F;URL&#x2F;主题&#x2F;部署）<br>├─ themes&#x2F;<br>│  └─ cactus&#x2F;<br>│     └─ _config.yml           # 主题配置（导航&#x2F;样式&#x2F;社交&#x2F;Logo）<br>├─ source&#x2F;<br>│  ├─ _posts&#x2F;                  # 文章（Markdown）<br>│  ├─ images&#x2F;                  # 站点级图片（头像、favicon 等）<br>│  └─ about&#x2F;<br>│     └─ index.md              # 关于我页面<br>├─ public&#x2F;                     # 生成的静态文件（自动生成）<br>└─ deploy.sh                   # 一键部署脚本（可选）</p>
+<p>备注：<br>  若需数学公式、评论系统、自定义域名（CNAME），可在此文基础上继续追加配置片段。</p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">Home</a></li>
+        
+          <li><a href="/about/">About</a></li>
+        
+          <li><a href="/archives/">Writing</a></li>
+        
+          <li><a target="_blank" rel="noopener" href="http://github.com/probberechts">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8E%A8%E8%8D%90%E7%94%A8-nvm-%E5%AE%89%E8%A3%85-Node%EF%BC%8C%E9%81%BF%E5%85%8D-npm-g-%E6%9D%83%E9%99%90%E9%97%AE%E9%A2%98"><span class="toc-number">1.</span> <span class="toc-text">推荐用 nvm 安装 Node，避免 npm -g 权限问题</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%87%8D%E6%96%B0%E5%8A%A0%E8%BD%BD-shell%EF%BC%88%E8%8B%A5%E4%BD%A0%E7%94%A8-bash%EF%BC%89"><span class="toc-number">2.</span> <span class="toc-text">重新加载 shell（若你用 bash）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%89%E8%A3%85-LTS-%E7%89%88%E6%9C%AC-Node"><span class="toc-number">3.</span> <span class="toc-text">安装 LTS 版本 Node</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%AA%8C%E8%AF%81"><span class="toc-number">4.</span> <span class="toc-text">验证</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9C%AC%E5%9C%B0%E9%A2%84%E8%A7%88"><span class="toc-number">5.</span> <span class="toc-text">本地预览</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E8%AE%BF%E9%97%AE-http-localhost-4000"><span class="toc-number">6.</span> <span class="toc-text">浏览器访问: http:&#x2F;&#x2F;localhost:4000</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E2%80%94%E2%80%94%E2%80%94%E2%80%94%E2%80%94%E2%80%94%E2%80%94%E2%80%94-my-site-config-yml-%E5%BC%80%E5%A7%8B-%E2%80%94%E2%80%94%E2%80%94%E2%80%94%E2%80%94%E2%80%94%E2%80%94%E2%80%94"><span class="toc-number">7.</span> <span class="toc-text">———————— my-site&#x2F;_config.yml 开始 ————————</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E4%BF%A1%E6%81%AF"><span class="toc-number">8.</span> <span class="toc-text">基本信息</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BD%91%E5%9D%80%E4%B8%8E%E6%B0%B8%E4%B9%85%E9%93%BE%E6%8E%A5"><span class="toc-number">9.</span> <span class="toc-text">网址与永久链接</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%86%85%E5%AE%B9%E4%B8%8E%E8%B5%84%E6%BA%90"><span class="toc-number">10.</span> <span class="toc-text">内容与资源</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%86%E9%A1%B5"><span class="toc-number">11.</span> <span class="toc-text">分页</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%BB%E9%A2%98%EF%BC%88%E7%AC%AC-4-%E6%AD%A5%E4%BC%9A%E5%AE%89%E8%A3%85-cactus%EF%BC%89"><span class="toc-number">12.</span> <span class="toc-text">主题（第 4 步会安装 cactus）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%83%A8%E7%BD%B2%EF%BC%88%E4%BD%BF%E7%94%A8-SSH-%E6%8E%A8%E9%80%81%E5%88%B0-GitHub-%E4%BB%93%E5%BA%93%EF%BC%89"><span class="toc-number">13.</span> <span class="toc-text">部署（使用 SSH 推送到 GitHub 仓库）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E2%80%94%E2%80%94%E2%80%94%E2%80%94%E2%80%94%E2%80%94%E2%80%94%E2%80%94-my-site-config-yml-%E7%BB%93%E6%9D%9F-%E2%80%94%E2%80%94%E2%80%94%E2%80%94%E2%80%94%E2%80%94%E2%80%94%E2%80%94"><span class="toc-number">14.</span> <span class="toc-text">———————— my-site&#x2F;_config.yml 结束 ————————</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BF%9B%E5%85%A5%E4%B8%BB%E9%A2%98%E7%9B%AE%E5%BD%95%E5%B9%B6%E5%85%8B%E9%9A%86%EF%BC%88%E5%BB%BA%E8%AE%AE%E7%94%A8-SSH%EF%BC%8CHTTPS-%E5%9C%A8%E5%9B%BD%E5%86%85%E5%8F%AF%E8%83%BD%E4%B8%8D%E7%A8%B3%EF%BC%89"><span class="toc-number">15.</span> <span class="toc-text">进入主题目录并克隆（建议用 SSH，HTTPS 在国内可能不稳）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%A1%AE%E8%AE%A4%E6%A0%B9-config-yml-%E4%B8%AD%E5%B7%B2%E6%9C%89%EF%BC%9A"><span class="toc-number">16.</span> <span class="toc-text">确认根 _config.yml 中已有：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#theme-cactus"><span class="toc-number">17.</span> <span class="toc-text">theme: cactus</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E2%80%94%E2%80%94%E2%80%94%E2%80%94-my-site-themes-cactus-config-yml-%E5%BC%80%E5%A7%8B-%E2%80%94%E2%80%94%E2%80%94%E2%80%94%E2%80%94%E2%80%94%E2%80%94"><span class="toc-number">18.</span> <span class="toc-text">————- my-site&#x2F;themes&#x2F;cactus&#x2F;_config.yml 开始 ———————</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Content"><span class="toc-number">19.</span> <span class="toc-text">Content</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Look-and-Feel"><span class="toc-number">20.</span> <span class="toc-text">Look and Feel</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%A2%9C%E8%89%B2%E6%96%B9%E6%A1%88%EF%BC%9Adark-light-classic-white%EF%BC%88%E7%BA%AF%E7%99%BD%EF%BC%89"><span class="toc-number">21.</span> <span class="toc-text">颜色方案：dark &#x2F; light &#x2F; classic &#x2F; white（纯白）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Misc-Plugins"><span class="toc-number">22.</span> <span class="toc-text">Misc &amp; Plugins</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E2%80%94%E2%80%94%E2%80%94%E2%80%94-my-site-themes-cactus-config-yml-%E7%BB%93%E6%9D%9F-%E2%80%94%E2%80%94%E2%80%94%E2%80%94%E2%80%94%E2%80%94%E2%80%94"><span class="toc-number">23.</span> <span class="toc-text">————- my-site&#x2F;themes&#x2F;cactus&#x2F;_config.yml 结束 ———————</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E9%A1%B5%E9%9D%A2"><span class="toc-number">24.</span> <span class="toc-text">创建页面</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BC%96%E8%BE%91%E6%96%87%E4%BB%B6-my-site-source-about-index-md"><span class="toc-number">25.</span> <span class="toc-text">编辑文件: my-site&#x2F;source&#x2F;about&#x2F;index.md</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%AF%E7%9B%B4%E6%8E%A5%E4%BD%BF%E7%94%A8%E4%B8%8B%E9%9D%A2%E7%9A%84%E5%86%85%E5%AE%B9%EF%BC%88%E6%8C%89%E9%9C%80%E4%BF%AE%E6%94%B9%EF%BC%89%EF%BC%9A"><span class="toc-number">26.</span> <span class="toc-text">可直接使用下面的内容（按需修改）：</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#title-%E5%85%B3%E4%BA%8E%E6%88%91date-2025-08-28"><span class="toc-number">26.1.</span> <span class="toc-text">title: 关于我date: 2025-08-28</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%F0%9F%91%A8%E2%80%8D%F0%9F%94%AC-%E6%9C%A8%E5%AD%90%E7%9F%A5%E6%81%A9%E7%9A%84%E6%B0%94%E8%B1%A1%E7%AA%97"><span class="toc-number">27.</span> <span class="toc-text">👨‍🔬 木子知恩的气象窗</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%93%9A-%E5%85%B4%E8%B6%A3%E6%96%B9%E5%90%91"><span class="toc-number">27.1.</span> <span class="toc-text">📚 兴趣方向</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%94%AC-%E9%A1%B9%E7%9B%AE"><span class="toc-number">27.2.</span> <span class="toc-text">🔬 项目</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%96%B0%E5%BB%BA%E6%96%87%E7%AB%A0"><span class="toc-number">28.</span> <span class="toc-text">新建文章</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BC%96%E8%BE%91-my-site-source-posts-%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0-md"><span class="toc-number">29.</span> <span class="toc-text">编辑: my-site&#x2F;source&#x2F;_posts&#x2F;我的第一篇文章.md</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9C%80%E5%B0%8F%E7%A4%BA%E4%BE%8B%EF%BC%9A"><span class="toc-number">30.</span> <span class="toc-text">最小示例：</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#title-%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0date-2025-08-28tags-%E6%B0%94%E8%B1%A1-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0"><span class="toc-number">30.1.</span> <span class="toc-text">title: 我的第一篇文章date: 2025-08-28tags: [气象, 深度学习]</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%8B%A5%E6%9C%AA%E5%88%9B%E5%BB%BA%E8%BF%87-SSH-Key%EF%BC%9A"><span class="toc-number">31.</span> <span class="toc-text">若未创建过 SSH Key：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%E8%BF%9E%E6%8E%A5%EF%BC%88%E7%9C%8B%E5%88%B0-You%E2%80%99ve-successfully-authenticated-%E5%8D%B3%E6%88%90%E5%8A%9F%EF%BC%89"><span class="toc-number">32.</span> <span class="toc-text">测试连接（看到 You’ve successfully authenticated 即成功）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E5%86%99%E6%96%87%E7%AB%A0-%E6%94%B9%E9%85%8D%E7%BD%AE"><span class="toc-number">33.</span> <span class="toc-text">1. 写文章 &#x2F; 改配置</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E6%9C%AC%E5%9C%B0%E9%A2%84%E8%A7%88%EF%BC%88%E5%8F%AF%E9%80%89%EF%BC%89"><span class="toc-number">34.</span> <span class="toc-text">2. 本地预览（可选）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E4%B8%80%E9%94%AE%E4%B8%8A%E7%BA%BF"><span class="toc-number">35.</span> <span class="toc-text">3. 一键上线</span></a></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2025/08/28/%E6%96%B0%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%B1%9E%E4%BA%8E%E8%87%AA%E5%B7%B1%E7%9A%84%E7%BD%91%E9%A1%B52/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2025/08/28/%E6%96%B0%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%B1%9E%E4%BA%8E%E8%87%AA%E5%B7%B1%E7%9A%84%E7%BD%91%E9%A1%B52/&text=从配置文件开始：搭建我的 Hexo 学术主页"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2025/08/28/%E6%96%B0%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%B1%9E%E4%BA%8E%E8%87%AA%E5%B7%B1%E7%9A%84%E7%BD%91%E9%A1%B52/&title=从配置文件开始：搭建我的 Hexo 学术主页"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2025/08/28/%E6%96%B0%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%B1%9E%E4%BA%8E%E8%87%AA%E5%B7%B1%E7%9A%84%E7%BD%91%E9%A1%B52/&is_video=false&description=从配置文件开始：搭建我的 Hexo 学术主页"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=从配置文件开始：搭建我的 Hexo 学术主页&body=Check out this article: http://example.com/2025/08/28/%E6%96%B0%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%B1%9E%E4%BA%8E%E8%87%AA%E5%B7%B1%E7%9A%84%E7%BD%91%E9%A1%B52/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2025/08/28/%E6%96%B0%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%B1%9E%E4%BA%8E%E8%87%AA%E5%B7%B1%E7%9A%84%E7%BD%91%E9%A1%B52/&title=从配置文件开始：搭建我的 Hexo 学术主页"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2025/08/28/%E6%96%B0%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%B1%9E%E4%BA%8E%E8%87%AA%E5%B7%B1%E7%9A%84%E7%BD%91%E9%A1%B52/&title=从配置文件开始：搭建我的 Hexo 学术主页"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2025/08/28/%E6%96%B0%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%B1%9E%E4%BA%8E%E8%87%AA%E5%B7%B1%E7%9A%84%E7%BD%91%E9%A1%B52/&title=从配置文件开始：搭建我的 Hexo 学术主页"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2025/08/28/%E6%96%B0%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%B1%9E%E4%BA%8E%E8%87%AA%E5%B7%B1%E7%9A%84%E7%BD%91%E9%A1%B52/&title=从配置文件开始：搭建我的 Hexo 学术主页"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2025/08/28/%E6%96%B0%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%B1%9E%E4%BA%8E%E8%87%AA%E5%B7%B1%E7%9A%84%E7%BD%91%E9%A1%B52/&name=从配置文件开始：搭建我的 Hexo 学术主页&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2025/08/28/%E6%96%B0%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%B1%9E%E4%BA%8E%E8%87%AA%E5%B7%B1%E7%9A%84%E7%BD%91%E9%A1%B52/&t=从配置文件开始：搭建我的 Hexo 学术主页"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2025
+    John Doe
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/probberechts">Projects</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>
