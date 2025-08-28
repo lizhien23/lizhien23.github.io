@@ -85,10 +85,8 @@
     <span id="actions">
       <ul>
         
-        <li><a class="icon" aria-label="Previous post" href="/2025/08/28/%E6%96%B0%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%B1%9E%E4%BA%8E%E8%87%AA%E5%B7%B1%E7%9A%84%E7%BD%91%E9%A1%B52/"><i class="fa-solid fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
         
-        
-        <li><a class="icon" aria-label="Next post" href="/2025/08/28/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Next post" href="/2025/08/28/%E6%96%B0%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%B1%9E%E4%BA%8E%E8%87%AA%E5%B7%B1%E7%9A%84%E7%BD%91%E9%A1%B52/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
         
         <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
         <li><a class="icon" aria-label="Share post" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
@@ -227,7 +225,7 @@
 <li>部署到 GitHub Pages（分支发布）<br>7.1 Git 与 SSH 准备<br>git config –global user.name  “lizhien23”<br>git config –global user.email “你的GitHub邮箱或 noreply 邮箱”</li>
 </ol>
 <h1 id="已创建过-SSH-Key-可跳过；否则："><a href="#已创建过-SSH-Key-可跳过；否则：" class="headerlink" title="已创建过 SSH Key 可跳过；否则："></a>已创建过 SSH Key 可跳过；否则：</h1><p>ssh-keygen -t ed25519 -C “你的邮箱”</p>
-<h1 id="测试连接（若成功会提示-You’ve-successfully-authenticated）"><a href="#测试连接（若成功会提示-You’ve-successfully-authenticated）" class="headerlink" title="测试连接（若成功会提示 You’ve successfully authenticated）"></a>测试连接（若成功会提示 You’ve successfully authenticated）</h1><p>ssh -T <a href="mailto:&#x67;&#105;&#x74;&#64;&#103;&#105;&#x74;&#104;&#117;&#98;&#46;&#99;&#x6f;&#x6d;">&#x67;&#105;&#x74;&#64;&#103;&#105;&#x74;&#104;&#117;&#98;&#46;&#99;&#x6f;&#x6d;</a></p>
+<h1 id="测试连接（若成功会提示-You’ve-successfully-authenticated）"><a href="#测试连接（若成功会提示-You’ve-successfully-authenticated）" class="headerlink" title="测试连接（若成功会提示 You’ve successfully authenticated）"></a>测试连接（若成功会提示 You’ve successfully authenticated）</h1><p>ssh -T <a href="mailto:&#103;&#x69;&#x74;&#64;&#x67;&#x69;&#x74;&#104;&#x75;&#98;&#x2e;&#99;&#111;&#109;">&#103;&#x69;&#x74;&#64;&#x67;&#x69;&#x74;&#104;&#x75;&#98;&#x2e;&#99;&#111;&#109;</a></p>
 <p>7.2 仓库 Pages 设置（分支发布）</p>
 <p>仓库名：lizhien23.github.io（必须与用户名一致）<br>GitHub → 仓库 → Settings → Pages：</p>
 <p>Source：Deploy from a branch</p>
@@ -244,7 +242,7 @@
 </ol>
 <p>EACCES: permission denied（npm 全局安装报错）<br>用 npx 调命令；或用 nvm 安装 Node 再 npm i -g hexo-cli。</p>
 <p>Port 4000 has been used（端口占用）<br>lsof -i:4000 → kill -9 <PID>；或 npx hexo s -p 5000。</p>
-<p>fatal: unable to access … Recv failure: Connection reset by peer（https 不稳定）<br>将部署与 git clone 改为 SSH 地址：<a href="mailto:&#x67;&#105;&#116;&#x40;&#103;&#105;&#x74;&#104;&#117;&#x62;&#46;&#99;&#x6f;&#x6d;">&#x67;&#105;&#116;&#x40;&#103;&#105;&#x74;&#104;&#117;&#x62;&#46;&#99;&#x6f;&#x6d;</a>:…。</p>
+<p>fatal: unable to access … Recv failure: Connection reset by peer（https 不稳定）<br>将部署与 git clone 改为 SSH 地址：<a href="mailto:&#103;&#x69;&#116;&#x40;&#x67;&#x69;&#x74;&#x68;&#x75;&#98;&#x2e;&#99;&#111;&#x6d;">&#103;&#x69;&#116;&#x40;&#x67;&#x69;&#x74;&#x68;&#x75;&#98;&#x2e;&#99;&#111;&#x6d;</a>:…。</p>
 <p>Author identity unknown（Git 未配置用户信息）<br>git config –global user.name “xxx” + git config –global user.email “xxx”。</p>
 <p>GitHub Actions 与分支部署冲突，日志 “The operation was canceled”<br>Pages → Build and deployment 选择 Deploy from a branch（master&#x2F;root），仅用 hexo d。</p>
 <p>404 页面<br>访问不存在路径或 about&#x2F;index.html 未生成。确保 source&#x2F;about&#x2F;index.md 存在，并执行 clean → g → d 后再访问 &#x2F;about&#x2F;。</p>
