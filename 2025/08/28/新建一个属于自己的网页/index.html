@@ -14,7 +14,7 @@
 <meta property="og:description" content="本文面向 Linux 用户，记录从 0 到上线的完整过程：初始化 Hexo → 配置文件编写 → 学术风主题（cactus） → GitHub Pages 部署（分支发布方案） → 常见问题速查。所有片段均可直接复制使用。   目录 1) 环境准备 2) 初始化 Hexo 站点 3) 站点配置（根 _config.yml） 4) 安装并启用 cactus 主题 4.1 主题配置 themes&#x2F;c">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2025-08-28T10:20:00.000Z">
-<meta property="article:modified_time" content="2025-08-28T10:42:11.358Z">
+<meta property="article:modified_time" content="2025-08-28T10:47:10.313Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="Hexo">
 <meta property="article:tag" content="GitHub Pages">
@@ -118,7 +118,7 @@
     
     
       <div id="toc">
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95"><span class="toc-number">1.</span> <span class="toc-text">目录</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87"><span class="toc-number">2.</span> <span class="toc-text">1) 环境准备</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95"><span class="toc-number">1.</span> <span class="toc-text">目录</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87"><span class="toc-number">2.</span> <span class="toc-text">1) 环境准备</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E5%88%9D%E5%A7%8B%E5%8C%96-Hexo-%E7%AB%99%E7%82%B9"><span class="toc-number">3.</span> <span class="toc-text">2) 初始化 Hexo 站点</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E7%AB%99%E7%82%B9%E9%85%8D%E7%BD%AE%EF%BC%88%E6%A0%B9-config-yml%EF%BC%89"><span class="toc-number">4.</span> <span class="toc-text">3) 站点配置（根 _config.yml）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AB%99%E7%82%B9%E4%BF%A1%E6%81%AF"><span class="toc-number">5.</span> <span class="toc-text">站点信息</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1-%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE-themes-cactus-config-yml"><span class="toc-number">5.1.</span> <span class="toc-text">4.1 主题配置 themes&#x2F;cactus&#x2F;_config.yml</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-%E6%B7%BB%E5%8A%A0%E2%80%9C%E5%85%B3%E4%BA%8E%E6%88%91%E2%80%9D%E9%A1%B5%E9%9D%A2%EF%BC%88About%EF%BC%89"><span class="toc-number">6.</span> <span class="toc-text">5) 添加“关于我”页面（About）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#title-%E5%85%B3%E4%BA%8E%E6%88%91date-2025-08-28"><span class="toc-number">6.1.</span> <span class="toc-text">title: 关于我date: 2025-08-28</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%F0%9F%91%A8%E2%80%8D%F0%9F%94%AC-%E6%9C%A8%E5%AD%90%E7%9F%A5%E6%81%A9%E7%9A%84%E6%B0%94%E8%B1%A1%E7%AA%97"><span class="toc-number">7.</span> <span class="toc-text">👨‍🔬 木子知恩的气象窗</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%93%9A-%E5%85%B4%E8%B6%A3%E6%96%B9%E5%90%91"><span class="toc-number">7.1.</span> <span class="toc-text">📚 兴趣方向</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%94%AC-%E9%A1%B9%E7%9B%AE"><span class="toc-number">7.2.</span> <span class="toc-text">🔬 项目</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%EF%BC%9Asource-posts-%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0-md"><span class="toc-number">8.</span> <span class="toc-text">文件：source&#x2F;_posts&#x2F;我的第一篇文章.md</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#title-%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0date-2025-08-28tags-%E6%B0%94%E8%B1%A1-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0"><span class="toc-number">8.1.</span> <span class="toc-text">title: 我的第一篇文章date: 2025-08-28tags: [气象, 深度学习]</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B7%B2%E5%88%9B%E5%BB%BA%E8%BF%87-SSH-Key-%E5%8F%AF%E8%B7%B3%E8%BF%87%EF%BC%9B%E5%90%A6%E5%88%99%EF%BC%9A"><span class="toc-number">9.</span> <span class="toc-text">已创建过 SSH Key 可跳过；否则：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%E8%BF%9E%E6%8E%A5%EF%BC%88%E8%8B%A5%E6%88%90%E5%8A%9F%E4%BC%9A%E6%8F%90%E7%A4%BA-You%E2%80%99ve-successfully-authenticated%EF%BC%89"><span class="toc-number">10.</span> <span class="toc-text">测试连接（若成功会提示 You’ve successfully authenticated）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E5%86%99%E6%96%87%E7%AB%A0-%E6%94%B9%E9%85%8D%E7%BD%AE"><span class="toc-number">11.</span> <span class="toc-text">1. 写文章 &#x2F; 改配置</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%88%96%E7%BC%96%E8%BE%91-about%E3%80%81%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE%E7%AD%89"><span class="toc-number">12.</span> <span class="toc-text">或编辑 about、主题配置等</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E6%9C%AC%E5%9C%B0%E9%A2%84%E8%A7%88%EF%BC%88%E5%8F%AF%E9%80%89%EF%BC%89"><span class="toc-number">13.</span> <span class="toc-text">2. 本地预览（可选）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E4%B8%80%E9%94%AE%E4%B8%8A%E7%BA%BF"><span class="toc-number">14.</span> <span class="toc-text">3. 一键上线</span></a></li></ol>
       </div>
     
   </span>
@@ -188,310 +188,77 @@
 <li><a href="#10-%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84%E9%80%9F%E8%A7%88">10) 目录结构速览</a></li>
 </ul>
 <hr>
-<h1 id="1-环境准备"><a href="#1-环境准备" class="headerlink" title="1) 环境准备"></a>1) 环境准备</h1><pre><code class="bash"># 推荐用 nvm 安装 Node，避免 npm -g 权限问题
-curl -fsSL https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
-source ~/.nvm/nvm.sh
-nvm install --lts
-
-# 验证
-node -v
-npm -v
-git --version
-
----
-
-# 2) 初始化 Hexo 站点
-
-```bash
-mkdir my-site &amp;&amp; cd my-site
-npx hexo init
-npm install
-
-# 本地预览
-npx hexo server
-# 浏览器访问 http://localhost:4000
-
-
----
-
-
-端口被占用（Port 4000 has been used）时：
-
-```bash
-
-lsof -i:4000          # 找到 PID
-kill -9 &lt;PID&gt;         # 结束进程
-npx hexo server -p 5000
-
-# 3) 站点配置（根 _config.yml）
-
-这是最重要的配置文件。以下为可直接使用的范例（请按需修改 title/url/deploy.repo 等）：
-
-# 站点信息
-title: 木子知恩的气象窗
-subtitle: 深度学习与气象应用
-description: 个人主页与学术博客
-author: 木子知恩
-language: zh-CN
-timezone: Asia/Shanghai
-
-# URL 与永久链接
-url: https://lizhien23.github.io
-root: /
-permalink: :year/:month/:day/:title/
-
-# 内容与资源
-post_asset_folder: true
-new_post_name: :title.md
-
-# 分页
-per_page: 10
-pagination_dir: page
-
-# 主题（稍后安装 cactus）
-theme: cactus
-
-# 部署（使用 SSH 推送到 GitHub 仓库）
-deploy:
-  type: git
-  repo: git@github.com:lizhien23/lizhien23.github.io.git
-  branch: master
-
-# 4) 安装并启用 cactus 主题
-cd themes
-# 建议用 SSH（国内网络对 https 可能不稳定）
-git clone git@github.com:probberechts/hexo-theme-cactus.git cactus
-cd ..
-
-
-确认根 _config.yml 中主题项为：
-
-theme: cactus
-
-4.1 主题配置 themes/cactus/_config.yml
-
-以下为白色背景 + 导航 + 社交 + 彩色头像的精简配置。直接覆盖即可使用。
-
-##############################################################################
-# Content
-##############################################################################
-
-projects_url: https://github.com/lizhien23
-direction: ltr
-
-nav:
-  home: /
-  about: /about/
-  archives: /archives/
-  projects: https://github.com/lizhien23
-
-social_links:
-  - icon: github
-    link: https://github.com/lizhien23
-    label: GitHub
-  - icon: mail
-    link: mailto:1587293806@qq.com
-    label: Email
-
-tags_overview: false
-posts_overview:
-  show_all_posts: false
-  post_count: 5
-  sort_updated: false
-
-archive:
-  sort_updated: false
-
-post:
-  show_updated: false
-
-copyright:
-  start_year: 2025
-  end_year:
-
-error_404:
-  enabled: true
-  title: &quot;404 Page Not Found&quot;
-  description: &quot;页面不存在，请检查链接是否正确。&quot;
-
-##############################################################################
-# Look and Feel
-##############################################################################
-
-logo:
-  enabled: true
-  width: 60
-  height: 60
-  url: /images/title.jpg     # 把头像放在 source/images/title.jpg
-  gravatar: false
-  grayout: false             # 关闭灰度悬停，保持彩色头像
-
-favicon:
-  desktop:
-    url: /images/favicon.ico
-    gravatar: false
-
-# 可选: dark / light / classic / white（纯白）
-colorscheme: white
-page_width: 48
-
-##############################################################################
-# Misc &amp; Plugins
-##############################################################################
-
-rss: false
-
-mathjax:
-  enabled: false             # 需要公式时改为 true 并按需配置
-
-cdn:
-  enable: true
-  jquery: https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js
-  clipboard: https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js
-  font_awesome: https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css
-
-
-头像：把图片放到 my-site/source/images/title.jpg 后部署即可显示。
-
-5) 添加“关于我”页面（About）
-npx hexo new page about
-
-
-编辑 source/about/index.md：
-
----
-title: 关于我
-date: 2025-08-28
----
-
-# 👨‍🔬 木子知恩的气象窗
-
-研究方向：**深度学习与气象应用**  
-邮箱：**[1587293806@qq.com](mailto:1587293806@qq.com)**
-
-## 📚 兴趣方向
-- 热带气旋强度与路径预测
-- 降水模式识别与订正
-- AI + 数值天气预报
-
-## 🔬 项目
-- 台风强度预测模型（CNN/ConvLSTM 等）
-- 降水超分辨率重建（ERA5 ↔︎ GPM）
-
-6) 写博客文章
-npx hexo new &quot;我的第一篇文章&quot;
-# 文件：source/_posts/我的第一篇文章.md
-
-
-最小 Front-matter 示例：
-
----
-title: 我的第一篇文章
-date: 2025-08-28
-tags: [气象, 深度学习]
----
-
-这里是正文内容……
-
-
-已启用 post_asset_folder: true：文章配图可放在
-source/_posts/我的第一篇文章/ 中，Markdown 里直接引用相对路径。
-
-7) 部署到 GitHub Pages（分支发布）
-7.1 Git 与 SSH 准备
-git config --global user.name  &quot;lizhien23&quot;
-git config --global user.email &quot;你的GitHub邮箱或 noreply 邮箱&quot;
-
-# 已创建过 SSH Key 可跳过；否则：
-ssh-keygen -t ed25519 -C &quot;你的邮箱&quot;
-
-# 测试连接（若成功会提示 You&#39;ve successfully authenticated）
-ssh -T git@github.com
-
-7.2 仓库 Pages 设置（分支发布）
-
-仓库名：lizhien23.github.io（必须与用户名一致）
-GitHub → 仓库 → Settings → Pages：
-
-Source：Deploy from a branch
-
-Branch：master
-
-Folder：/(root)
-
-7.3 一键部署脚本
-
-在站点根目录创建 deploy.sh：
-
-#!/bin/bash
-echo &quot;🚀 开始部署 Hexo 博客...&quot;
-npx hexo clean
-npx hexo g
-npx hexo d
-echo &quot;✅ 部署完成！访问：https://lizhien23.github.io&quot;
-
-
-赋予执行权限并部署：
-
-chmod +x deploy.sh
-./deploy.sh
-
-
-成功后几分钟内即可在 https://lizhien23.github.io
- 看到更新。若缓存未刷新，强制刷新或换浏览器测试。
-
-8) 常见问题速查
-
-EACCES: permission denied（npm 全局安装报错）
-用 npx 调命令；或用 nvm 安装 Node 再 npm i -g hexo-cli。
-
-Port 4000 has been used（端口占用）
-lsof -i:4000 → kill -9 &lt;PID&gt;；或 npx hexo s -p 5000。
-
-fatal: unable to access ... Recv failure: Connection reset by peer（https 不稳定）
-将部署与 git clone 改为 SSH 地址：git@github.com:...。
-
-Author identity unknown（Git 未配置用户信息）
-git config --global user.name &quot;xxx&quot; + git config --global user.email &quot;xxx&quot;。
-
-GitHub Actions 与分支部署冲突，日志 &quot;The operation was canceled&quot;
-Pages → Build and deployment 选择 Deploy from a branch（master/root），仅用 hexo d。
-
-404 页面
-访问不存在路径或 about/index.html 未生成。确保 source/about/index.md 存在，并执行 clean → g → d 后再访问 /about/。
-
-头像变灰
-themes/cactus/_config.yml 中 logo.grayout: false。
-
-改成白色背景
-themes/cactus/_config.yml 中 colorscheme: white 或 light。
-
-9) 日常工作流
-# 1. 写文章 / 改配置
-npx hexo new &quot;文章标题&quot;
-# 或编辑 about、主题配置等
-
-# 2. 本地预览（可选）
-npx hexo s
-
-# 3. 一键上线
-./deploy.sh
-
-10) 目录结构速览
-my-site/
-├─ _config.yml                 # 站点配置（标题/URL/主题/部署）
-├─ themes/
-│  └─ cactus/
-│     └─ _config.yml           # 主题配置（导航/样式/社交/Logo）
-├─ source/
-│  ├─ _posts/                  # 文章（Markdown）
-│  ├─ images/                  # 站点级图片（头像、favicon 等）
-│  └─ about/
-│     └─ index.md              # 关于我页面
-├─ public/                     # 生成后的静态文件（自动生成）
-└─ deploy.sh                   # 一键部署脚本（可选）
-
-</code></pre>
+<h1 id="1-环境准备"><a href="#1-环境准备" class="headerlink" title="1) 环境准备"></a>1) 环境准备</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 推荐用 nvm 安装 Node，避免 npm -g 权限问题</span></span><br><span class="line">curl -fsSL https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash</span><br><span class="line"><span class="built_in">source</span> ~/.nvm/nvm.sh</span><br><span class="line">nvm install --lts</span><br><span class="line"></span><br><span class="line"><span class="comment"># 验证</span></span><br><span class="line">node -v</span><br><span class="line">npm -v</span><br><span class="line">git --version</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="2-初始化-Hexo-站点"><a href="#2-初始化-Hexo-站点" class="headerlink" title="2) 初始化 Hexo 站点"></a>2) 初始化 Hexo 站点</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> my-site &amp;&amp; <span class="built_in">cd</span> my-site</span><br><span class="line">npx hexo init</span><br><span class="line">npm install</span><br><span class="line"></span><br><span class="line"><span class="comment"># 本地预览</span></span><br><span class="line">npx hexo server</span><br><span class="line"><span class="comment"># 浏览器访问 http://localhost:4000</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>当端口被占用（Port 4000 has been used）时：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">lsof -i:4000          <span class="comment"># 找到 PID</span></span><br><span class="line"><span class="built_in">kill</span> -9 &lt;PID&gt;         <span class="comment"># 结束进程</span></span><br><span class="line">npx hexo server -p 5000</span><br></pre></td></tr></table></figure>
+<h1 id="3-站点配置（根-config-yml）"><a href="#3-站点配置（根-config-yml）" class="headerlink" title="3) 站点配置（根 _config.yml）"></a>3) 站点配置（根 _config.yml）</h1><p>这是最重要的配置文件。以下为可直接使用的范例（请按需修改 title&#x2F;url&#x2F;deploy.repo 等）：</p>
+<h1 id="站点信息"><a href="#站点信息" class="headerlink" title="站点信息"></a>站点信息</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">title: 木子知恩的气象窗</span><br><span class="line">subtitle: 深度学习与气象应用</span><br><span class="line">description: 个人主页与学术博客</span><br><span class="line">author: 木子知恩</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># URL 与永久链接</span></span><br><span class="line">url: https://lizhien23.github.io</span><br><span class="line">root: /</span><br><span class="line">permalink: :year/:month/:day/:title/</span><br><span class="line"></span><br><span class="line"><span class="comment"># 内容与资源</span></span><br><span class="line">post_asset_folder: <span class="literal">true</span></span><br><span class="line">new_post_name: :title.md</span><br><span class="line"></span><br><span class="line"><span class="comment"># 分页</span></span><br><span class="line">per_page: 10</span><br><span class="line">pagination_dir: page</span><br><span class="line"></span><br><span class="line"><span class="comment"># 主题（稍后安装 cactus）</span></span><br><span class="line">theme: cactus</span><br><span class="line"></span><br><span class="line"><span class="comment"># 部署（使用 SSH 推送到 GitHub 仓库）</span></span><br><span class="line">deploy:</span><br><span class="line">  <span class="built_in">type</span>: git</span><br><span class="line">  repo: git@github.com:lizhien23/lizhien23.github.io.git</span><br><span class="line">  branch: master</span><br><span class="line"></span><br><span class="line"><span class="comment"># 4) 安装并启用 cactus 主题</span></span><br><span class="line"><span class="built_in">cd</span> themes</span><br><span class="line"><span class="comment"># 建议用 SSH（国内网络对 https 可能不稳定）</span></span><br><span class="line">git <span class="built_in">clone</span> git@github.com:probberechts/hexo-theme-cactus.git cactus</span><br><span class="line"><span class="built_in">cd</span> ..</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="4-1-主题配置-themes-cactus-config-yml"><a href="#4-1-主题配置-themes-cactus-config-yml" class="headerlink" title="4.1 主题配置 themes&#x2F;cactus&#x2F;_config.yml"></a>4.1 主题配置 themes&#x2F;cactus&#x2F;_config.yml</h2><p>以下为白色背景 + 导航 + 社交 + 彩色头像的精简配置。直接覆盖即可使用。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">##############################################################################</span></span><br><span class="line"><span class="comment"># Content</span></span><br><span class="line"><span class="comment">##############################################################################</span></span><br><span class="line"></span><br><span class="line">projects_url: https://github.com/lizhien23</span><br><span class="line">direction: ltr</span><br><span class="line"></span><br><span class="line">nav:</span><br><span class="line">  home: /</span><br><span class="line">  about: /about/</span><br><span class="line">  archives: /archives/</span><br><span class="line">  projects: https://github.com/lizhien23</span><br><span class="line"></span><br><span class="line">social_links:</span><br><span class="line">  - icon: github</span><br><span class="line">    <span class="built_in">link</span>: https://github.com/lizhien23</span><br><span class="line">    label: GitHub</span><br><span class="line">  - icon: mail</span><br><span class="line">    <span class="built_in">link</span>: mailto:1587293806@qq.com</span><br><span class="line">    label: Email</span><br><span class="line"></span><br><span class="line">tags_overview: <span class="literal">false</span></span><br><span class="line">posts_overview:</span><br><span class="line">  show_all_posts: <span class="literal">false</span></span><br><span class="line">  post_count: 5</span><br><span class="line">  sort_updated: <span class="literal">false</span></span><br><span class="line"></span><br><span class="line">archive:</span><br><span class="line">  sort_updated: <span class="literal">false</span></span><br><span class="line"></span><br><span class="line">post:</span><br><span class="line">  show_updated: <span class="literal">false</span></span><br><span class="line"></span><br><span class="line">copyright:</span><br><span class="line">  start_year: 2025</span><br><span class="line">  end_year:</span><br><span class="line"></span><br><span class="line">error_404:</span><br><span class="line">  enabled: <span class="literal">true</span></span><br><span class="line">  title: <span class="string">&quot;404 Page Not Found&quot;</span></span><br><span class="line">  description: <span class="string">&quot;页面不存在，请检查链接是否正确。&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">##############################################################################</span></span><br><span class="line"><span class="comment"># Look and Feel</span></span><br><span class="line"><span class="comment">##############################################################################</span></span><br><span class="line"></span><br><span class="line">logo:</span><br><span class="line">  enabled: <span class="literal">true</span></span><br><span class="line">  width: 60</span><br><span class="line">  height: 60</span><br><span class="line">  url: /images/title.jpg     <span class="comment"># 把头像放在 source/images/title.jpg</span></span><br><span class="line">  gravatar: <span class="literal">false</span></span><br><span class="line">  grayout: <span class="literal">false</span>             <span class="comment"># 关闭灰度悬停，保持彩色头像</span></span><br><span class="line"></span><br><span class="line">favicon:</span><br><span class="line">  desktop:</span><br><span class="line">    url: /images/favicon.ico</span><br><span class="line">    gravatar: <span class="literal">false</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 可选: dark / light / classic / white（纯白）</span></span><br><span class="line">colorscheme: white</span><br><span class="line">page_width: 48</span><br><span class="line"></span><br><span class="line"><span class="comment">##############################################################################</span></span><br><span class="line"><span class="comment"># Misc &amp; Plugins</span></span><br><span class="line"><span class="comment">##############################################################################</span></span><br><span class="line"></span><br><span class="line">rss: <span class="literal">false</span></span><br><span class="line"></span><br><span class="line">mathjax:</span><br><span class="line">  enabled: <span class="literal">false</span>             <span class="comment"># 需要公式时改为 true 并按需配置</span></span><br><span class="line"></span><br><span class="line">cdn:</span><br><span class="line">  <span class="built_in">enable</span>: <span class="literal">true</span></span><br><span class="line">  jquery: https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js</span><br><span class="line">  clipboard: https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js</span><br><span class="line">  font_awesome: https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">头像：把图片放到 my-site/source/images/title.jpg 后部署即可显示。</span><br></pre></td></tr></table></figure>
+
+<h1 id="5-添加“关于我”页面（About）"><a href="#5-添加“关于我”页面（About）" class="headerlink" title="5) 添加“关于我”页面（About）"></a>5) 添加“关于我”页面（About）</h1><p>npx hexo new page about</p>
+<p>编辑 source&#x2F;about&#x2F;index.md：</p>
+<hr>
+<h2 id="title-关于我date-2025-08-28"><a href="#title-关于我date-2025-08-28" class="headerlink" title="title: 关于我date: 2025-08-28"></a>title: 关于我<br>date: 2025-08-28</h2><h1 id="👨‍🔬-木子知恩的气象窗"><a href="#👨‍🔬-木子知恩的气象窗" class="headerlink" title="👨‍🔬 木子知恩的气象窗"></a>👨‍🔬 木子知恩的气象窗</h1><p>研究方向：<strong>深度学习与气象应用</strong><br>邮箱：**<a href="mailto:1587293806@qq.com">1587293806@qq.com</a>**</p>
+<h2 id="📚-兴趣方向"><a href="#📚-兴趣方向" class="headerlink" title="📚 兴趣方向"></a>📚 兴趣方向</h2><ul>
+<li>热带气旋强度与路径预测</li>
+<li>降水模式识别与订正</li>
+<li>AI + 数值天气预报</li>
+</ul>
+<h2 id="🔬-项目"><a href="#🔬-项目" class="headerlink" title="🔬 项目"></a>🔬 项目</h2><ul>
+<li>台风强度预测模型（CNN&#x2F;ConvLSTM 等）</li>
+<li>降水超分辨率重建（ERA5 ↔︎ GPM）</li>
+</ul>
+<ol start="6">
+<li>写博客文章<br>npx hexo new “我的第一篇文章”</li>
+</ol>
+<h1 id="文件：source-posts-我的第一篇文章-md"><a href="#文件：source-posts-我的第一篇文章-md" class="headerlink" title="文件：source&#x2F;_posts&#x2F;我的第一篇文章.md"></a>文件：source&#x2F;_posts&#x2F;我的第一篇文章.md</h1><p>最小 Front-matter 示例：</p>
+<hr>
+<h2 id="title-我的第一篇文章date-2025-08-28tags-气象-深度学习"><a href="#title-我的第一篇文章date-2025-08-28tags-气象-深度学习" class="headerlink" title="title: 我的第一篇文章date: 2025-08-28tags: [气象, 深度学习]"></a>title: 我的第一篇文章<br>date: 2025-08-28<br>tags: [气象, 深度学习]</h2><p>这里是正文内容……</p>
+<p>已启用 post_asset_folder: true：文章配图可放在<br>source&#x2F;_posts&#x2F;我的第一篇文章&#x2F; 中，Markdown 里直接引用相对路径。</p>
+<ol start="7">
+<li>部署到 GitHub Pages（分支发布）<br>7.1 Git 与 SSH 准备<br>git config –global user.name  “lizhien23”<br>git config –global user.email “你的GitHub邮箱或 noreply 邮箱”</li>
+</ol>
+<h1 id="已创建过-SSH-Key-可跳过；否则："><a href="#已创建过-SSH-Key-可跳过；否则：" class="headerlink" title="已创建过 SSH Key 可跳过；否则："></a>已创建过 SSH Key 可跳过；否则：</h1><p>ssh-keygen -t ed25519 -C “你的邮箱”</p>
+<h1 id="测试连接（若成功会提示-You’ve-successfully-authenticated）"><a href="#测试连接（若成功会提示-You’ve-successfully-authenticated）" class="headerlink" title="测试连接（若成功会提示 You’ve successfully authenticated）"></a>测试连接（若成功会提示 You’ve successfully authenticated）</h1><p>ssh -T <a href="mailto:&#x67;&#105;&#x74;&#64;&#103;&#105;&#x74;&#104;&#117;&#98;&#46;&#99;&#x6f;&#x6d;">&#x67;&#105;&#x74;&#64;&#103;&#105;&#x74;&#104;&#117;&#98;&#46;&#99;&#x6f;&#x6d;</a></p>
+<p>7.2 仓库 Pages 设置（分支发布）</p>
+<p>仓库名：lizhien23.github.io（必须与用户名一致）<br>GitHub → 仓库 → Settings → Pages：</p>
+<p>Source：Deploy from a branch</p>
+<p>Branch：master</p>
+<p>Folder：&#x2F;(root)</p>
+<p>7.3 一键部署脚本</p>
+<p>在站点根目录创建 deploy.sh：</p>
+<p>#!&#x2F;bin&#x2F;bash<br>echo “🚀 开始部署 Hexo 博客…”<br>npx hexo clean<br>npx hexo g<br>npx hexo d<br>echo “✅ 部署完成！访问：<a target="_blank" rel="noopener" href="https://lizhien23.github.io/">https://lizhien23.github.io</a>“</p>
+<p>赋予执行权限并部署：</p>
+<p>chmod +x deploy.sh<br>.&#x2F;deploy.sh</p>
+<p>成功后几分钟内即可在 <a target="_blank" rel="noopener" href="https://lizhien23.github.io/">https://lizhien23.github.io</a><br> 看到更新。若缓存未刷新，强制刷新或换浏览器测试。</p>
+<ol start="8">
+<li>常见问题速查</li>
+</ol>
+<p>EACCES: permission denied（npm 全局安装报错）<br>用 npx 调命令；或用 nvm 安装 Node 再 npm i -g hexo-cli。</p>
+<p>Port 4000 has been used（端口占用）<br>lsof -i:4000 → kill -9 <PID>；或 npx hexo s -p 5000。</p>
+<p>fatal: unable to access … Recv failure: Connection reset by peer（https 不稳定）<br>将部署与 git clone 改为 SSH 地址：<a href="mailto:&#x67;&#105;&#116;&#x40;&#103;&#105;&#x74;&#104;&#117;&#x62;&#46;&#99;&#x6f;&#x6d;">&#x67;&#105;&#116;&#x40;&#103;&#105;&#x74;&#104;&#117;&#x62;&#46;&#99;&#x6f;&#x6d;</a>:…。</p>
+<p>Author identity unknown（Git 未配置用户信息）<br>git config –global user.name “xxx” + git config –global user.email “xxx”。</p>
+<p>GitHub Actions 与分支部署冲突，日志 “The operation was canceled”<br>Pages → Build and deployment 选择 Deploy from a branch（master&#x2F;root），仅用 hexo d。</p>
+<p>404 页面<br>访问不存在路径或 about&#x2F;index.html 未生成。确保 source&#x2F;about&#x2F;index.md 存在，并执行 clean → g → d 后再访问 &#x2F;about&#x2F;。</p>
+<p>头像变灰<br>themes&#x2F;cactus&#x2F;_config.yml 中 logo.grayout: false。</p>
+<p>改成白色背景<br>themes&#x2F;cactus&#x2F;_config.yml 中 colorscheme: white 或 light。</p>
+<ol start="9">
+<li>日常工作流</li>
+</ol>
+<h1 id="1-写文章-改配置"><a href="#1-写文章-改配置" class="headerlink" title="1. 写文章 &#x2F; 改配置"></a>1. 写文章 &#x2F; 改配置</h1><p>npx hexo new “文章标题”</p>
+<h1 id="或编辑-about、主题配置等"><a href="#或编辑-about、主题配置等" class="headerlink" title="或编辑 about、主题配置等"></a>或编辑 about、主题配置等</h1><h1 id="2-本地预览（可选）"><a href="#2-本地预览（可选）" class="headerlink" title="2. 本地预览（可选）"></a>2. 本地预览（可选）</h1><p>npx hexo s</p>
+<h1 id="3-一键上线"><a href="#3-一键上线" class="headerlink" title="3. 一键上线"></a>3. 一键上线</h1><p>.&#x2F;deploy.sh</p>
+<ol start="10">
+<li>目录结构速览<br>my-site&#x2F;<br>├─ _config.yml                 # 站点配置（标题&#x2F;URL&#x2F;主题&#x2F;部署）<br>├─ themes&#x2F;<br>│  └─ cactus&#x2F;<br>│     └─ _config.yml           # 主题配置（导航&#x2F;样式&#x2F;社交&#x2F;Logo）<br>├─ source&#x2F;<br>│  ├─ _posts&#x2F;                  # 文章（Markdown）<br>│  ├─ images&#x2F;                  # 站点级图片（头像、favicon 等）<br>│  └─ about&#x2F;<br>│     └─ index.md              # 关于我页面<br>├─ public&#x2F;                     # 生成后的静态文件（自动生成）<br>└─ deploy.sh                   # 一键部署脚本（可选）</li>
+</ol>
 
   </div>
 </article>
@@ -519,7 +286,7 @@ my-site/
     
     
       <div id="toc-footer" style="display: none">
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95"><span class="toc-number">1.</span> <span class="toc-text">目录</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87"><span class="toc-number">2.</span> <span class="toc-text">1) 环境准备</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95"><span class="toc-number">1.</span> <span class="toc-text">目录</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87"><span class="toc-number">2.</span> <span class="toc-text">1) 环境准备</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E5%88%9D%E5%A7%8B%E5%8C%96-Hexo-%E7%AB%99%E7%82%B9"><span class="toc-number">3.</span> <span class="toc-text">2) 初始化 Hexo 站点</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E7%AB%99%E7%82%B9%E9%85%8D%E7%BD%AE%EF%BC%88%E6%A0%B9-config-yml%EF%BC%89"><span class="toc-number">4.</span> <span class="toc-text">3) 站点配置（根 _config.yml）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AB%99%E7%82%B9%E4%BF%A1%E6%81%AF"><span class="toc-number">5.</span> <span class="toc-text">站点信息</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1-%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE-themes-cactus-config-yml"><span class="toc-number">5.1.</span> <span class="toc-text">4.1 主题配置 themes&#x2F;cactus&#x2F;_config.yml</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-%E6%B7%BB%E5%8A%A0%E2%80%9C%E5%85%B3%E4%BA%8E%E6%88%91%E2%80%9D%E9%A1%B5%E9%9D%A2%EF%BC%88About%EF%BC%89"><span class="toc-number">6.</span> <span class="toc-text">5) 添加“关于我”页面（About）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#title-%E5%85%B3%E4%BA%8E%E6%88%91date-2025-08-28"><span class="toc-number">6.1.</span> <span class="toc-text">title: 关于我date: 2025-08-28</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%F0%9F%91%A8%E2%80%8D%F0%9F%94%AC-%E6%9C%A8%E5%AD%90%E7%9F%A5%E6%81%A9%E7%9A%84%E6%B0%94%E8%B1%A1%E7%AA%97"><span class="toc-number">7.</span> <span class="toc-text">👨‍🔬 木子知恩的气象窗</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%93%9A-%E5%85%B4%E8%B6%A3%E6%96%B9%E5%90%91"><span class="toc-number">7.1.</span> <span class="toc-text">📚 兴趣方向</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%94%AC-%E9%A1%B9%E7%9B%AE"><span class="toc-number">7.2.</span> <span class="toc-text">🔬 项目</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%EF%BC%9Asource-posts-%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0-md"><span class="toc-number">8.</span> <span class="toc-text">文件：source&#x2F;_posts&#x2F;我的第一篇文章.md</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#title-%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0date-2025-08-28tags-%E6%B0%94%E8%B1%A1-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0"><span class="toc-number">8.1.</span> <span class="toc-text">title: 我的第一篇文章date: 2025-08-28tags: [气象, 深度学习]</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B7%B2%E5%88%9B%E5%BB%BA%E8%BF%87-SSH-Key-%E5%8F%AF%E8%B7%B3%E8%BF%87%EF%BC%9B%E5%90%A6%E5%88%99%EF%BC%9A"><span class="toc-number">9.</span> <span class="toc-text">已创建过 SSH Key 可跳过；否则：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%E8%BF%9E%E6%8E%A5%EF%BC%88%E8%8B%A5%E6%88%90%E5%8A%9F%E4%BC%9A%E6%8F%90%E7%A4%BA-You%E2%80%99ve-successfully-authenticated%EF%BC%89"><span class="toc-number">10.</span> <span class="toc-text">测试连接（若成功会提示 You’ve successfully authenticated）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E5%86%99%E6%96%87%E7%AB%A0-%E6%94%B9%E9%85%8D%E7%BD%AE"><span class="toc-number">11.</span> <span class="toc-text">1. 写文章 &#x2F; 改配置</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%88%96%E7%BC%96%E8%BE%91-about%E3%80%81%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE%E7%AD%89"><span class="toc-number">12.</span> <span class="toc-text">或编辑 about、主题配置等</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E6%9C%AC%E5%9C%B0%E9%A2%84%E8%A7%88%EF%BC%88%E5%8F%AF%E9%80%89%EF%BC%89"><span class="toc-number">13.</span> <span class="toc-text">2. 本地预览（可选）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E4%B8%80%E9%94%AE%E4%B8%8A%E7%BA%BF"><span class="toc-number">14.</span> <span class="toc-text">3. 一键上线</span></a></li></ol>
       </div>
     
 
